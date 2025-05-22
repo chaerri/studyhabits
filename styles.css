@@ -1,0 +1,113 @@
+:root{
+  --color-body: #c8a4d4;
+  --color-border: #8c60a6;
+  --color-box: #b08dc4;
+  --color-navbar: #a885bc;
+  --color-hover: #9570ab;
+  --color-text: #2c2c2c;
+}
+
+[data-theme="dark"] {
+  /* Dark Mode Overrides */
+  --color-body: #573463;
+  --color-border: #aa7ec4;
+  --color-box: #492a5b;
+  --color-navbar: #4a1d64;
+  --color-hover: #542a6d;
+  --color-text: #e8e2ec;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--color-body);
+  color: var(--color-text);
+}
+
+.navbar {
+  background-color: var(--color-navbar);
+  display: flex;
+  justify-content: center;
+}
+
+.navbar a {
+  flex: 1;
+  text-align: center;
+  padding: 15px;
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid var(--color-border);
+}
+
+.navbar a:hover {
+  background-color: var(--color-hover);
+}
+
+.navbar a:last-child {
+  border-right: none;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
+}
+
+.box {
+  background-color: var(--color-box);
+  border: 1px solid var(--color-border);
+  width: 400px;
+  text-align: center;
+  padding: 10px;
+}
+
+.box-top {
+  border-bottom: 1px solid var(--color-border);
+  padding: 10px;
+  font-weight: bold;
+}
+
+.box-middle {
+  padding: 20px 0;
+}
+
+.box-middle .icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.box-bottom {
+  border-top: 1px solid var(--color-border);
+  padding: 10px;
+}
+
+select, button {
+  margin: 5px;
+  padding: 5px 10px;
+}
+
+#settings {
+  display: none;
+  padding: 20px;
+  text-align: center;
+}
+
+#home{
+  text-align: center;
+  color: var(--color-text);
+}
+
+button.disabled {
+  background-color: #ccc;
+  color: #888;
+  cursor: not-allowed;
+}
+
