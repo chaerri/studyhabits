@@ -14,7 +14,7 @@ function updateCountdowns() {
     updateDisplay('stretch', stretchRemaining);
     if (stretchRemaining === 0) {
       enableButton('stretch');
-      stretchNotif.play();
+      stretchNotif.play?.();
     }
   }
 
@@ -23,7 +23,7 @@ function updateCountdowns() {
     updateDisplay('water', waterRemaining);
     if (waterRemaining === 0) {
       enableButton('water');
-      waterNotif.play();
+      waterNotif.play?.();
     }
   }
 }
@@ -34,18 +34,18 @@ function formatTime(secondsLeft) {
   return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 }
 
-function updateDisplay(type, secondsLeft) {
+function updateDisplay(type, secondsLeft, forceReady = false) {
   const display = document.getElementById(`${type}-countdown`);
   const button = document.querySelector(`#${type}-button`);
 
-  if (secondsLeft > 0) {
-    display.innerText = `${formatTime(secondsLeft)} till next ${type} break`;
-    button.disabled = true;
-    button.classList.add('disabled');
-  } else {
+  if (forceReady || secondsLeft === 0) {
     display.innerText = `Time to ${type === 'stretch' ? 'stretch' : 'drink'}!`;
     button.disabled = false;
     button.classList.remove('disabled');
+  } else {
+    display.innerText = `${formatTime(secondsLeft)} till next ${type} break`;
+    button.disabled = true;
+    button.classList.add('disabled');
   }
 }
 
@@ -62,10 +62,22 @@ function startTimer(type) {
 function setIntervalTime(type) {
   const value = parseInt(document.getElementById(`${type}-interval`).value);
   if (type === 'stretch') {
-    stretchInterval = value * 60; // Convert minutes to seconds
+    stretchInterval = value * 60;
+    stretchRemaining = 0;              // reset timer
+    updateDisplay('stretch', 0);       // show "Time to stretch!"
+    enableButton('stretch');           // enable the stretch button immediately
   } else {
     waterInterval = value * 60;
+    waterRemaining = 0;
+    updateDisplay('water', 0);
+    enableButton('water');             // enable the water button immediately
   }
+}
+
+function disableButton(type) {
+  const button = document.querySelector(`#${type}-button`);
+  button.disabled = true;
+  button.classList.add('disabled');
 }
 
 function enableButton(type) {
