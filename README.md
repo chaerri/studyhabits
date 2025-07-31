@@ -7,3 +7,5 @@ You can access it through GitHub Pages by opening the link in your browser. The 
 * Customize notification sounds
 
 It's designed to be simple and distraction-free, so you can stay focused while taking care of your body.
+
+Access the website through Github pages: https://chaerri.github.io/studyhabits
