@@ -1,4 +1,4 @@
-StudyBuddy is a website that helps you build healthy study habits by reminding you to drink water and stretch at customizable intervals.
+StudyHabits is a website that helps you build healthy study habits by reminding you to drink water and stretch at customizable intervals.
 
 You can access it through GitHub Pages by opening the link in your browser. The site lets you:
 
